@@ -6,12 +6,14 @@
 
 #include "scalablemenu.h"
 #include "ui_ScalableMenu.h"
-#include <QDebug>
 
-ScalableMenu::ScalableMenu(int rMin, int rMax, int btnW, int btnH, int handleW, QWidget *parent) :
+
+ScalableMenu::ScalableMenu(int rMin, int rMax, int btnW, int btnH, int handleW, QWidget *main, QWidget *menu,
+                           QWidget *parent) :
         QWidget(parent), ui(new Ui::ScalableMenu),
         m_minWidth(rMin), m_maxWidth(rMax), m_handleWidth(handleW),
-        m_btnWidth(btnW), m_btnHeight(btnH) {
+        m_btnWidth(btnW), m_btnHeight(btnH),
+        m_mainWidget(main), m_menuWidget(menu) {
     ui->setupUi(this);
     _Init();
 }
@@ -21,13 +23,18 @@ ScalableMenu::~ScalableMenu() {
 }
 
 void ScalableMenu::_Init() {
+    if (m_mainWidget != nullptr && m_menuWidget != nullptr) {
+        ui->main_content->addWidget(m_mainWidget);
+        ui->menu_content->addWidget(m_menuWidget);
+    }
     connect(ui->splitter, SIGNAL(splitterMoved(int, int)), this, SLOT(SplitterMoved(int, int)));
+    ui->splitter->setHandleWidth(m_handleWidth);
     m_button = new QPushButton(this);
-    ui->right_frame->setMaximumWidth(m_maxWidth);
+    ui->menu->setMaximumWidth(m_maxWidth);
     m_button->setFixedSize(m_btnWidth, m_btnHeight);
     m_button->setIconSize(QSize(m_btnWidth - 10, m_btnHeight - 10));
     m_button->setStyleSheet(
-            "QPushButton{background-color: #008cba;border:none;border-radius:5px;}QPushButton:hover{background-color: rgb(56, 115, 254);}QPushButton:pressed{background-color: rgb(56, 115, 254);}");
+            "QPushButton{background-color: #008cba;border:none;border-top-left-radius:6px;border-bottom-left-radius:6px;}QPushButton:hover{background-color: rgb(56, 115, 254);}QPushButton:pressed{background-color: rgb(56, 115, 254);}");
     connect(m_button, &QPushButton::clicked, this, [=]() {
         BtnClicked();
     });
@@ -35,12 +42,12 @@ void ScalableMenu::_Init() {
 
 void ScalableMenu::BtnClicked() {
     QList<int> sizeList;
-    if (ui->right_frame->width() > 0) {
+    if (ui->menu->width() > 0) {
         sizeList.append(ui->splitter->width());
         sizeList.append(0);
     } else {
-        sizeList.append(ui->splitter->width() - ui->right_frame->maximumWidth());
-        sizeList.append(ui->right_frame->maximumWidth());
+        sizeList.append(ui->splitter->width() - ui->menu->maximumWidth());
+        sizeList.append(ui->menu->maximumWidth());
     }
     ui->splitter->setSizes(sizeList);
     _SetBtnPos();
@@ -53,8 +60,7 @@ void ScalableMenu::SplitterMoved(int pos, int index) {
 }
 
 void ScalableMenu::_SetBtnIcon() {
-    qDebug() << ui->right_frame->width();
-    if (ui->right_frame->width() != 0) {
+    if (ui->menu->width() != 0) {
         m_button->setIcon(QIcon(":/SMenu/res/mClose_.png"));
     } else {
         m_button->setIcon(QIcon(":/SMenu/res/mOpen_.png"));
@@ -62,7 +68,7 @@ void ScalableMenu::_SetBtnIcon() {
 }
 
 void ScalableMenu::_SetBtnPos() {
-    m_button->move(this->width() - ui->right_frame->width() - m_button->width() - 11,
+    m_button->move(this->width() - ui->menu->width() - m_button->width() - 11,
                    (ui->splitter->height() - m_button->height()) / 2);
 }
 
@@ -74,7 +80,6 @@ void ScalableMenu::showEvent(QShowEvent *event) {
 
 void ScalableMenu::resizeEvent(QResizeEvent *event) {
     _SetBtnPos();
-    qDebug() << ui->right_frame->geometry();
     QWidget::resizeEvent(event);
 }
 

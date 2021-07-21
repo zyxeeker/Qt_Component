@@ -19,13 +19,16 @@ class ScalableMenu : public QWidget {
 Q_OBJECT
 
 public:
-    explicit ScalableMenu(int rMin, int rMax, int btnW, int btnH, int handleW = 5, QWidget *parent = nullptr);
+    explicit ScalableMenu(int rMin, int rMax, int btnW, int btnH, int handleW = 5, QWidget *main = nullptr,
+                          QWidget *menu = nullptr, QWidget *parent = nullptr);
 
     ~ScalableMenu() override;
 
 private:
     Ui::ScalableMenu *ui;
     QPushButton *m_button;
+    QWidget *m_mainWidget = nullptr;
+    QWidget *m_menuWidget = nullptr;
     int m_maxWidth;
     int m_minWidth;
     int m_handleWidth;
