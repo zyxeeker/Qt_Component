@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="res">
+        <file>res/mini.png</file>
+        <file>res/mini_clicked.png</file>
+        <file>res/mini_hover.png</file>
+        <file>res/close.png</file>
+        <file>res/close_clicked.png</file>
+        <file>res/close_hover.png</file>
+        <file>res/logo.png</file>
+    </qresource>
+    <qresource prefix="SMenu">
+        <file>res/mClose.png</file>
+        <file>res/mClose_.png</file>
+        <file>res/mOpen.png</file>
+        <file>res/mOpen_.png</file>
+    </qresource>
+</RCC>
