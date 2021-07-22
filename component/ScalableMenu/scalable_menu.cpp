@@ -4,8 +4,8 @@
 
 // You may need to build the project (run Qt uic code generator) to get "ui_ScalableMenu.h" resolved
 
-#include "scalablemenu.h"
-#include "ui_ScalableMenu.h"
+#include "scalable_menu.h"
+#include "ui_Scalable_Menu.h"
 
 
 ScalableMenu::ScalableMenu(int rMin, int rMax, int btnW, int btnH, int handleW, QWidget *main, QWidget *menu,

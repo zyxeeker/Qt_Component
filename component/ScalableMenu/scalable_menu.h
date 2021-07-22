@@ -2,8 +2,8 @@
 // Created by zyx on 2021/7/21.
 //
 
-#ifndef QT_COMPONENT_SCALABLEMENU_H
-#define QT_COMPONENT_SCALABLEMENU_H
+#ifndef QT_COMPONENT_SCALABLE_MENU_H
+#define QT_COMPONENT_SCALABLE_MENU_H
 
 #include <QWidget>
 #include <QPushButton>
@@ -54,4 +54,4 @@ protected:
 };
 
 
-#endif //QT_COMPONENT_SCALABLEMENU_H
+#endif //QT_COMPONENT_SCALABLE_MENU_H

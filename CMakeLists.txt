@@ -32,7 +32,7 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
-        component/StartUI/startui.cpp component/StartUI/startui.h component/StartUI/startui.ui resource.qrc component/ScalableMenu/scalablemenu.cpp component/ScalableMenu/scalablemenu.h component/ScalableMenu/scalablemenu.ui component/test.cpp component/test.h component/test.ui)
+        component/StartUI/start_ui.cpp component/StartUI/start_ui.h component/StartUI/start_ui.ui resource.qrc component/ScalableMenu/scalable_menu.cpp component/ScalableMenu/scalable_menu.h component/ScalableMenu/scalable_menu.ui component/test.cpp component/test.h component/test.ui component/SysInfo/memory/sys_memory.cpp component/SysInfo/memory/sys_memory.h component/SysInfo/memory/sys_memory.ui component/SysInfo/cpu/sys_cpu.cpp component/SysInfo/cpu/sys_cpu.h component/SysInfo/cpu/sys_cpu.ui component/SysInfo/cpu/model/cpu_thread.cpp component/SysInfo/cpu/model/cpu_thread.h)
 
 if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(Qt_Component

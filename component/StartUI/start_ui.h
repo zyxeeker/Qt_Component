@@ -2,8 +2,8 @@
 // Created by zyx on 2021/7/20.
 //
 
-#ifndef QT_COMPONENT_STARTUI_H
-#define QT_COMPONENT_STARTUI_H
+#ifndef QT_COMPONENT_START_UI_H
+#define QT_COMPONENT_START_UI_H
 
 #include <QWidget>
 
@@ -25,4 +25,4 @@ private:
 };
 
 
-#endif //QT_COMPONENT_STARTUI_H
+#endif //QT_COMPONENT_START_UI_H

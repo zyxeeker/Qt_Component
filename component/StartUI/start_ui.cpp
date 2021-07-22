@@ -4,8 +4,8 @@
 
 // You may need to build the project (run Qt uic code generator) to get "ui_StartUI.h" resolved
 
-#include "startui.h"
-#include "ui_StartUI.h"
+#include "start_ui.h"
+#include "ui_Start_UI.h"
 
 
 StartUI::StartUI(QWidget *parent) :
