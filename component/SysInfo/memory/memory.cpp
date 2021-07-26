@@ -28,9 +28,12 @@ void SysMemory::_SetDisplay(double data) {
 
 void SysMemory::_SetStyle(int num) {
     if (num > 60)
-        ui->progressBar->setStyleSheet("QProgressBar::chunk{background-color: #ffaa00;}");
+        ui->progressBar->setStyleSheet(
+                "QProgressBar {border: 1px solid grey;}QProgressBar::chunk{background-color: #ffaa00;}");
     else if (num > 80)
-        ui->progressBar->setStyleSheet("QProgressBar::chunk{background-color: #d60000;}");
+        ui->progressBar->setStyleSheet(
+                "QProgressBar {border: 1px solid grey;}QProgressBar::chunk{background-color: #d60000;}");
     else
-        ui->progressBar->setStyleSheet("QProgressBar::chunk{background-color: #05b8cc;}");
+        ui->progressBar->setStyleSheet(
+                "QProgressBar {border: 1px solid grey;}QProgressBar::chunk{background-color: #05b8cc;}");
 }
